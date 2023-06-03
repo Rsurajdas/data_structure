@@ -97,6 +97,20 @@ class LinkedList {
       holder = holder.prev;
     }
   }
+
+  reverseList() {
+    let temp;
+    let holder = this.front;
+    while (holder !== null) {
+      temp = holder.prev;
+      holder.prev = holder.next;
+      holder.next = temp;
+      holder = holder.prev;
+    }
+    if (temp != null) {
+      this.front = temp.prev;
+    }
+  }
 }
 
 let list = new LinkedList();
