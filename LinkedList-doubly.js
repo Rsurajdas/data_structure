@@ -111,6 +111,25 @@ class LinkedList {
       this.front = temp.prev;
     }
   }
+
+  isPalindrome() {
+    let frontHolder = this.front;
+    let rearHolder = this.rear;
+    let left = 0;
+    let right = this.size - 1;
+    let valid = true;
+
+    while (valid && left < right) {
+      if (frontHolder.value !== rearHolder.value) {
+        valid = false;
+      }
+      left++;
+      right--;
+      frontHolder = frontHolder.next;
+      rearHolder = rearHolder.prev;
+    }
+    return valid;
+  }
 }
 
 let list = new LinkedList();
