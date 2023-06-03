@@ -141,6 +141,25 @@ class LinkedList {
     }
     console.log(slow.value);
   }
+
+  contains(val) {
+    let frontHolder = this.front;
+    let rearHolder = this.rear;
+    let left = 0;
+    let right = this.size - 1;
+    let found = false;
+
+    while (!found && left < right) {
+      if (frontHolder.value === val || rearHolder.value === val) {
+        found = true;
+      }
+      left++;
+      right--;
+      frontHolder = frontHolder.next;
+      rearHolder = rearHolder.prev;
+    }
+    return found;
+  }
 }
 
 let list = new LinkedList();
@@ -148,12 +167,11 @@ list.insertFront(10);
 list.insertFront(20);
 list.insertFront(30);
 list.insertFront(40);
+list.insertFront(70);
 list.insert(50, 3);
 list.insert(60, 2);
-list.deleteFront();
-list.delete(3);
-list.printReverse();
-list.length();
-console.log("--------------------------------");
+// list.deleteFront();
+// list.delete(3);
 list.print();
-list.length();
+console.log("------");
+list.printMiddle();
