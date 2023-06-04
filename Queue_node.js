@@ -71,3 +71,16 @@ queue.dequeue();
 queue.dequeue();
 queue.print();
 console.log(queue);
+
+function generatePrintBinary(n) {
+  var q = new Queue();
+
+  q.enqueue("1");
+
+  while (n--) {
+    var s1 = q.dequeue();
+    console.log(s1);
+    q.enqueue(s1 + "0");
+    q.enqueue(s1 + "1");
+  }
+}

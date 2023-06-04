@@ -1,24 +1,21 @@
 class Stack {
   constructor() {
     this.stack = [];
-    this.top = 0;
   }
 
   push(value) {
-    this.stack[this.top] = value;
-    this.top++;
+    this.stack.push(value);
   }
 
   pop() {
     if (this.stack.length > 0) {
-      this.top--;
-      return this.stack.splice(this.top, 1);
+      return this.stack.pop();
     }
   }
 
   peek() {
     if (this.stack.length > 0) {
-      return this.stack[this.top - 1];
+      return this.stack[this.stack.length - 1];
     } else {
       console.log("Stack is Empty");
     }
@@ -38,14 +35,40 @@ class Stack {
 }
 
 let stack = new Stack();
-
 stack.push(10);
 stack.push(20);
-stack.push(30);
-console.log(stack.pop(), "pop");
-stack.push(40);
-console.log(stack.peek(), "peek");
-console.log(stack.isEmpty(), "isEmpty");
-console.log(stack.pop(), "pop");
-console.log(stack.size(), "size");
-stack.print();
+
+class Queue {
+  constructor() {
+    this.s1 = new Stack();
+    this.s2 = new Stack();
+  }
+
+  enqueue(val) {
+    while (!this.s1.isEmpty()) {
+      this.s2.push(this.s1.pop());
+    }
+    this.s1.push(val);
+    this.s1.print();
+    while (!this.s2.isEmpty()) {
+      this.s1.push(this.s2.pop());
+    }
+    this.s1.print();
+  }
+
+  dequeue() {
+    return this.s1.pop();
+  }
+
+  print() {
+    console.log(this.s1);
+  }
+}
+
+let q = new Queue();
+
+q.enqueue(10);
+q.enqueue(20);
+q.enqueue(30);
+q.enqueue(40);
+// q.print();
