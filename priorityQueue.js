@@ -35,6 +35,10 @@ class PriorityQueue {
   print() {
     console.log(this.items);
   }
+
+  isEmpty() {
+    return this.items.length === 0;
+  }
 }
 
 var pq = new PriorityQueue();
