@@ -34,3 +34,22 @@ class Graph {
     console.log(this.adjList);
   }
 }
+
+function degree(g) {
+  var nodes = g.getAllNodes();
+  var degrees = new Map();
+
+  for (var i = 0; i < nodes.length; i++) {
+    var adj = g.adjList.get(nodes[i]);
+
+    console.log(nodes[i], adj);
+    for (const [key, value] of adj.entries()) {
+      if (degrees.has(key.adj)) {
+        degrees.set(key.adj, degrees.get(key.adj) + 1);
+      } else {
+        degrees.set(key.adj, 1);
+      }
+    }
+  }
+  console.log(degrees);
+}
